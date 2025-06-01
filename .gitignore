@@ -1,0 +1,55 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual Environment
+venv39/
+env/
+ENV/
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+# Model checkpoints (keep only the best/latest one)
+models/checkpoint_epoch_*.pth
+!models/checkpoint_epoch_49.pth  # Keep only the final model
+
+# Training data (since it's large)
+data/train/*
+data/val/*
+!data/train/.gitkeep
+!data/val/.gitkeep
+
+# IDE specific files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+# Large image files and temporary files
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.bmp
+!images/*.png  # Keep the documentation images
+
+# Logs and databases
+*.log
+*.sqlite
+*.db
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock

@@ -1,0 +1,78 @@
+# Bengali Character Recognition Project
+
+This project implements a deep learning model for recognizing Bengali characters from images. It includes both command-line and graphical user interfaces for character recognition.
+
+## Project Structure
+
+- `train.py`: Model training script
+- `recognize_text.py`: Command-line interface for character recognition
+- `bengali_gui.py`: Graphical user interface for character recognition
+- `model.py`: Neural network model architecture
+- `data_loader.py`: Data loading and preprocessing utilities
+- `utils.py`: Utility functions for visualization and evaluation
+- `evaluate.py`: Model evaluation script
+
+## Features
+
+- Single character recognition
+- Multiple character recognition from images
+- Drag-and-drop GUI interface
+- Real-time character recognition
+- Support for various image formats (PNG, JPG, JPEG, BMP)
+- GPU acceleration support via CUDA
+- Character segmentation for text recognition
+- Confidence scores for predictions
+
+## Model Performance
+
+- Overall Validation Accuracy: 97.48%
+- Supports 62 Bengali characters including:
+  - Basic characters (ক, খ, গ, etc.)
+  - Numbers (০-৯)
+  - Special characters and modifiers
+
+## Requirements
+
+- Python 3.9
+- PyTorch with CUDA support
+- OpenCV
+- Tkinter
+- PIL (Pillow)
+- NumPy
+- See requirements.txt for complete list
+
+## Usage
+
+1. GUI Interface:
+   ```
+   python bengali_gui.py
+   ```
+
+2. Command Line Interface:
+   ```
+   python recognize_text.py
+   ```
+
+3. Training:
+   ```
+   python train.py
+   ```
+
+4. Evaluation:
+   ```
+   python evaluate.py
+   ```
+
+## Data Organization
+
+- `data/train/`: Training dataset
+- `data/val/`: Validation dataset
+- `models/`: Saved model checkpoints
+
+## Latest Updates
+
+- Added GUI interface with drag-and-drop support
+- Implemented multiple character recognition
+- Improved character segmentation algorithm
+- Enhanced recognition accuracy
+- Added batch scripts for easy execution
