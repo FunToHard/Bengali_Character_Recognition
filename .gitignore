@@ -35,13 +35,16 @@ data/val/*
 .DS_Store
 Thumbs.db
 
-# Large image files and temporary files
-*.jpg
-*.jpeg
-*.png
-*.gif
-*.bmp
-!images/*.png  # Keep the documentation images
+# Exclude all images except those in the images directory
+/**/**.jpg
+/**/**.jpeg
+/**/**.png
+/**/**.gif
+/**/**.bmp
+
+# But include documentation images
+!/images/
+!/images/*.png
 
 # Logs and databases
 *.log
