@@ -86,13 +86,42 @@ Write-Host "`nGit configuration:" -ForegroundColor Green
 Write-Host "Email: $(git config --global user.email)"
 Write-Host "Name: $(git config --global user.name)"
 
+Write-Host "`nSetting up Git repository..." -ForegroundColor Green
+
+# Check if git is already initialized
+if (Test-Path ".git") {
+    Write-Host "Git repository already initialized" -ForegroundColor Yellow
+} else {
+    Write-Host "Initializing Git repository..." -ForegroundColor Cyan
+    git init
+}
+
+# Check if remote origin exists and handle it
+$remoteExists = git remote -v | Select-String "origin"
+if ($remoteExists) {
+    Write-Host "`nRemote 'origin' already exists. What would you like to do?" -ForegroundColor Yellow
+    Write-Host "1. Remove existing and add new remote" -ForegroundColor White
+    Write-Host "2. Keep existing remote" -ForegroundColor White
+    $choice = Read-Host "Enter your choice (1 or 2)"
+    
+    if ($choice -eq "1") {
+        Write-Host "Removing existing remote..." -ForegroundColor Cyan
+        git remote remove origin
+        $newRemote = Read-Host "Enter your new GitHub repository URL"
+        Write-Host "Adding new remote..." -ForegroundColor Cyan
+        git remote add origin $newRemote
+    }
+} else {
+    $newRemote = Read-Host "Enter your GitHub repository URL"
+    Write-Host "Adding remote..." -ForegroundColor Cyan
+    git remote add origin $newRemote
+}
+
 Write-Host "`nRepository is ready for GitHub!" -ForegroundColor Green
-Write-Host "You can now initialize the repository and push to GitHub with:"
-Write-Host "git init" -ForegroundColor Cyan
+Write-Host "You can now push your code with:" -ForegroundColor White
 Write-Host "git add ." -ForegroundColor Cyan
 Write-Host "git commit -m 'Initial commit'" -ForegroundColor Cyan
 Write-Host "git branch -M main" -ForegroundColor Cyan
-Write-Host "git remote add origin <your-repository-url>" -ForegroundColor Cyan
 Write-Host "git push -u origin main" -ForegroundColor Cyan
 
 Write-Host "`nPress any key to exit..."
