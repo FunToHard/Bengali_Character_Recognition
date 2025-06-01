@@ -17,10 +17,21 @@ $latestCheckpoint = Get-ChildItem "models/checkpoint_epoch_*.pth" |
     Sort-Object LastWriteTime -Descending | 
     Select-Object -First 1
 if ($latestCheckpoint) {
-    Copy-Item $latestCheckpoint.FullName "models/checkpoint_epoch_49.pth" -Force
+    # Only copy if it's not already the correct name
+    if ($latestCheckpoint.Name -ne "checkpoint_epoch_49.pth") {
+        Write-Host "Renaming latest checkpoint to checkpoint_epoch_49.pth..."
+        Copy-Item $latestCheckpoint.FullName "models/checkpoint_epoch_49.pth" -Force
+    } else {
+        Write-Host "Latest checkpoint is already named correctly."
+    }
+    
+    # Remove other checkpoints
     Get-ChildItem "models/checkpoint_epoch_*.pth" | 
         Where-Object { $_.Name -ne "checkpoint_epoch_49.pth" } | 
-        ForEach-Object { Remove-Item $_.FullName }
+        ForEach-Object { 
+            Write-Host "Removing old checkpoint: $($_.Name)"
+            Remove-Item $_.FullName 
+        }
 }
 
 # Create empty .gitkeep files
