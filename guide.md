@@ -18,8 +18,8 @@ This application is designed to recognize Bengali characters from images. It sup
    # Clone or download the repository
    # Navigate to the project directory
    # Create and activate virtual environment
-   python -m venv venv39
-   .\venv39\Scripts\activate
+   python -m venv venv
+   .\venv\Scripts\activate
 
    # Install requirements
    pip install -r requirements.txt

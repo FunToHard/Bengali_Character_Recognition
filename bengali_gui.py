@@ -2,8 +2,17 @@ import sys
 import tkinter as tk
 from tkinter import ttk, scrolledtext
 from tkinter import filedialog
-from tkinterdnd2 import DND_FILES, TkinterDnD
 import platform
+
+# Try importing tkinterdnd2, fallback to basic functionality if not available
+try:
+    from tkinterdnd2 import DND_FILES, TkinterDnD
+    DRAG_DROP_ENABLED = True
+except ImportError:
+    print("Warning: tkinterdnd2 not found. Drag and drop will be disabled.")
+    print("To enable drag and drop, please reinstall the package:")
+    print("pip install --force-reinstall tkinterdnd2")
+    DRAG_DROP_ENABLED = False
 from PIL import Image, ImageTk
 import torch
 from recognize_text import load_model, recognize_text, get_bengali_char_map
@@ -120,7 +129,11 @@ class BengaliRecognizerGUI:
             self.results_text.insert(tk.END, f"Error processing image:\n{str(e)}")
 
 def main():
-    root = TkinterDnD.Tk()  # Use TkinterDnD instead of regular Tk
+    # Use TkinterDnD if available, otherwise use regular Tk
+    if DRAG_DROP_ENABLED:
+        root = TkinterDnD.Tk()
+    else:
+        root = tk.Tk()
     
     # Set window icon and style
     style = ttk.Style()

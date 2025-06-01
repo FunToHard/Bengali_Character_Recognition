@@ -2,7 +2,7 @@
 $ErrorActionPreference = "Stop"
 
 Write-Host "Activating Python 3.9 environment..." -ForegroundColor Green
-& .\venv39\Scripts\Activate.ps1
+& .\venv\Scripts\Activate.ps1
 
 Write-Host "Starting model training..." -ForegroundColor Green
 Write-Host "This may take several hours. Progress will be displayed..." -ForegroundColor Yellow

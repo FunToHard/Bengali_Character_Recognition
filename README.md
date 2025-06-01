@@ -21,8 +21,8 @@ A deep learning-based system for recognizing Bengali characters from images. The
 2. Clone this repository
 3. Setup virtual environment:
    ```powershell
-   python -m venv venv39
-   .\venv39\Scripts\activate
+   python -m venv venv
+   .\venv\Scripts\activate
    pip install -r requirements.txt
    ```
 4. Run the application:
