@@ -1,6 +1,3 @@
-# ⚠️WARNING⚠️
-The model is able to recognize characters only in perfect condition. Handwritten characters might not get recognized even if trained on `handwritten characters`.
-
 # Bengali Character Recognition
 
 A deep learning-based system for recognizing Bengali characters from images. The system features both a command-line interface and a graphical user interface with drag-and-drop support.
